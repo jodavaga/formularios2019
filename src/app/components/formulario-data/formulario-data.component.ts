@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-formulario-data',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioDataComponent implements OnInit {
 
+  forma:FormGroup;
+
   constructor() { }
 
   ngOnInit() {
+    this.forma = new FormGroup({
+      nombre: new FormControl('Jose D'),
+      apellido: new FormControl(),
+      correo: new FormControl() 
+    })
+  }
+
+  guardarCambios(){
+    console.log(this.forma.value)
+    console.log(this.forma)
   }
 
 }

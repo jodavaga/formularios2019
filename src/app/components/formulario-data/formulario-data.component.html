@@ -2,7 +2,7 @@
 <h3>Aproximacion por Data</h3>
 <br>
 
-<form>
+<form [formGroup]="forma" (ngSubmit)="guardarCambios()" novalidate>
 
   <div class="form-group row">
     <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
@@ -12,6 +12,7 @@
               class="form-control"
               placeholder="Nombre"
               name="nombre"
+              formControlName="nombre"
               >
 
     </div>

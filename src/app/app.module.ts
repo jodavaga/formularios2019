@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FormularioDataComponent } from './components/formulario-data/formulario-data.component';
@@ -19,6 +19,7 @@ import { APP_ROUTING } from './app.routes';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     APP_ROUTING
   ],
   providers: [],
