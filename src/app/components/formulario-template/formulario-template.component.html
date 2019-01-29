@@ -1,0 +1,69 @@
+
+    
+<h3>Aproximacion por Template</h3>
+<br>
+
+
+<form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate>
+
+    <div class="form-group row">
+      <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+      <div class="col-sm-10">
+        <input  
+                type="text" 
+                class="form-control"
+                placeholder="Nombre"
+                name="nombre"
+                required
+                minlength="3"
+                [(ngModel)]="usuario.nombre"
+                [ngClass]="{ 'is-invalid': nombre.invalid && nombre.touched, 'is-valid': nombre.valid}"
+                #nombre="ngModel">
+                
+        <small *ngIf="nombre.errors?.required" class="invalid-feedback">Nombre es un campo requrido</small>
+        <small *ngIf="nombre.errors?.minlength" class="invalid-feedback">Debe ser de al menos {{ nombre.errors.minlength.requiredLength}} letras</small>
+      </div>
+    </div>
+    
+    <div class="form-group row">
+        <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+        <div class="col-sm-10">
+          <input  
+                  type="text" 
+                  class="form-control"
+                  placeholder="Apellido"
+                  name="apellido"
+                  [(ngModel)]="usuario.apellido"
+                  [ngClass]="{ 'is-invalid': apellido.invalid && apellido.touched, 'is-valid': apellido.valid}"
+                  required
+                  #apellido="ngModel">
+
+                  <small *ngIf="apellido.errors?.required" class="invalid-feedback">Apellido es un campo requrido</small>
+                 
+        </div>
+      </div>
+    
+      <div class="form-group row">
+          <label for="correo" class="col-sm-2 col-form-label">Correo</label>
+          <div class="col-sm-10">
+            <input  
+                    type="email" 
+                    class="form-control"
+                    placeholder="Correo"
+                    name="correo"
+                    required
+                    [(ngModel)]="usuario.correo"
+                    [ngClass]="{ 'is-invalid': correo.invalid && correo.touched, 'is-valid': correo.valid}"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    #correo="ngModel">
+
+                    <small *ngIf="correo.errors?.required" class="invalid-feedback">correo es un campo requrido</small>
+                    <small *ngIf="correo.errors?.pattern" class="invalid-feedback">Formato de correo invalido</small>
+      
+          </div>
+        </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="forma.invalid"> Guardar </button>
+    
+  </form>
+  
