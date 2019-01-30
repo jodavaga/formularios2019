@@ -12,8 +12,11 @@
               class="form-control"
               placeholder="Nombre"
               name="nombre"
+              [ngClass]="{ 'is-invalid': forma.controls.nombre.invalid && forma.controls.nombre.touched, 'is-valid': forma.controls.nombre.valid}"
               formControlName="nombre"
               >
+      <small *ngIf="forma.controls['nombre'].errors?.required" class="invalid-feedback">Nombre es un campo requrido</small>
+      <small *ngIf="forma.controls['nombre'].errors?.minlength" class="invalid-feedback">Nombre debe ser al menos 3 caracteres</small>
 
     </div>
   </div>
@@ -26,7 +29,11 @@
                 class="form-control"
                 placeholder="Apellido"
                 name="apellido"
+                [ngClass]="{ 'is-invalid': forma.controls.apellido.invalid && forma.controls.apellido.touched, 'is-valid': forma.controls.apellido.valid}"
+                formControlName="apellido"
                 >
+        <small *ngIf="forma.controls['apellido'].errors?.required" class="invalid-feedback">Apellido es un campo requrido</small>
+        
   
       </div>
     </div>
@@ -39,10 +46,14 @@
                   class="form-control"
                   placeholder="Correo"
                   name="correo"
+                  [ngClass]="{ 'is-invalid': forma.controls.correo.invalid && forma.controls.correo.touched, 'is-valid': forma.controls.correo.valid}"
+                  formControlName="correo"
                   >
+
+          <small *ngIf="forma.controls['correo'].errors?.required" class="invalid-feedback">Correo es un campo requrido</small>
     
         </div>
       </div>
 
-  <button type="submit" class="btn btn-primary"> Guardar </button>
+  <button type="submit" class="btn btn-primary" [disabled]="!forma.valid"> Guardar </button>
 </form>
